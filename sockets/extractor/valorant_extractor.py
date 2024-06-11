@@ -41,7 +41,7 @@ def getRequest(request,full=False):
 def fullExtractor(request):
     return getRequest(request,full=True) 
 
-def singeExtractor(request):
+def singleExtractor(request):
     return getRequest(request,full=False) 
 
 """
