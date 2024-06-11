@@ -31,7 +31,6 @@ def getRequest(request,full=False):
     if not full:
        url =  f"{url}{request['id']}"
 
-
     url = f"{url}/?language=pt-BR"
 
     if request['type'] == "agentes":
@@ -39,6 +38,13 @@ def getRequest(request,full=False):
     
     return requests.get(url).json()
 
+def fullExtractor(request):
+    return getRequest(request,full=True) 
+
+def singeExtractor(request):
+    return getRequest(request,full=False) 
+
+"""
 def levenshteinDistance(wordList, searchWord, k):
     lowerSearchWord = searchWord.lower()
     
@@ -46,8 +52,9 @@ def levenshteinDistance(wordList, searchWord, k):
     result = [word for word in wordList if Levenshtein.distance(word.lower(), lowerSearchWord) <= k]
     
     return result
-
-def extractor(request):
+"""
+"""
+def Extractor(request):
 
     fullResponse = getRequest(request,full=True)
     data = json.load(fullResponse)
@@ -68,4 +75,9 @@ def extractor(request):
 
     # tratamento de retorno de finalResponse
     returnString = ''
+
+    if request['type'] == "agentes":
+
+
     return returnString
+"""
