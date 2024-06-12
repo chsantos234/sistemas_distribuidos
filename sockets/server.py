@@ -19,12 +19,12 @@ async def websocket_handler(websocket):
         print(websocket.local_address)
         print(f"Recebido de {websocket.local_address[0]}:{websocket.local_address[1]}\Requisição recebida: {request}")
 
-        if request['id'] == None:
+        if request['uuid'] == None:
             response = valorant_extractor.fullExtractor(request)
         else:
             response = valorant_extractor.singleExtractor(request)
 
-        await websocket.send(response)
+        await websocket.send(json.dumps(response))
 
 async def main():
     async with websockets.serve(websocket_handler, HOST, PORT):

@@ -1,4 +1,3 @@
-import Levenshtein
 import requests
 import json
 import re
@@ -22,21 +21,23 @@ def getRequest(request,full=False):
     requestRoutes = {
         "armas": "weapons/",
         "mapas": "maps/",
-        "agentes": "agents/",
+        "agentes": "agents",
         "": "," # adicionar rota
     }
 
     url = f"{header}{requestRoutes[request['type']]}"
 
     if not full:
-       url =  f"{url}{request['id']}"
+       url =  f"{url}/{request['uuid']}"
 
-    url = f"{url}/?language=pt-BR"
+    url = f"{url}?language=pt-BR"
 
     if request['type'] == "agentes":
         url = f"{url}&isPlayableCharacter=true"
     
-    return requests.get(url).json()
+    print(f'URL: {url}')
+    response = requests.get(url)
+    return response.json()
 
 def fullExtractor(request):
     return getRequest(request,full=True) 
