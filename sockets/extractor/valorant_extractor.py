@@ -35,7 +35,6 @@ def getRequest(request,full=False):
     if request['type'] == "agentes":
         url = f"{url}&isPlayableCharacter=true"
     
-    print(f'URL: {url}')
     response = requests.get(url)
     return response.json()
 
