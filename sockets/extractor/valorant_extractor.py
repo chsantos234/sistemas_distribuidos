@@ -19,8 +19,8 @@ def getRequest(request,full=False):
     header = "https://valorant-api.com/v1/"
     
     requestRoutes = {
-        "armas": "weapons/",
-        "mapas": "maps/",
+        "armas": "weapons",
+        "mapas": "maps",
         "agentes": "agents",
         "": "," # adicionar rota
     }
