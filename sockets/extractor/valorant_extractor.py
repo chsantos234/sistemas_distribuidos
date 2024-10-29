@@ -1,4 +1,4 @@
-from gpt_api import Gptapi
+from .gpt_api import Gptapi
 import requests
 import json
 import re
@@ -9,6 +9,10 @@ request['id'] - id do objeto de pesquisa (não vem do front)
 request['search'] - string de pesquisa
 """
 
+def getGPTRequest(request):
+    return Gptapi.send_message(request['msg'])
+
+
 def getRequest(request,full=False):
 
     header = "https://valorant-api.com/v1/"
@@ -16,12 +20,11 @@ def getRequest(request,full=False):
     requestRoutes = {
         "armas": "weapons",
         "mapas": "maps",
-        "agentes": "agents",
-        "chat": "chat"
+        "agentes": "agents"
     }
 
-    if request['type'] == "chat": 
-        return Gptapi.send_message(request['msg'])
+    #if request['type'] == "chat": 
+    #    return Gptapi.send_message(request['msg'])
 
     url = f"{header}{requestRoutes[request['type']]}"
 

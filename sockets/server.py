@@ -19,6 +19,8 @@ async def websocket_handler(websocket):
         
         print(f"RECEBIDO DE {websocket.local_address[0]}:{websocket.local_address[1]}: {request} \n")
 
+        if request['msg'] != None:
+            response = valorant_extractor.getGPTRequest(request)
         if request['uuid'] == None:
             response = valorant_extractor.fullExtractor(request)
         else:
