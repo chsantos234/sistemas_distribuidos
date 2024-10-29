@@ -1,10 +1,17 @@
 from openai import OpenAI
-from env import env
+from dotenv import load_dotenv
+import os
 
 class Gptapi():
 
     def __init__(self):
-        self.api_key = f"{env('GPT-KEY')}"
+        #self.api_key = f"{env('GPT-KEY')}"
+        env_path = os.path.join(os.path.dirname(__file__), '..', '..', '.env')
+        load_dotenv(env_path)
+
+        self.api_key = f"{os.getenv("MY_ENV_VARIABLE")}"
+        print(self.api_key)
+
         self.client = OpenAI(api_key=self.api_key)
         self.assistant = self.client.beta.assistants.retrieve("asst_4uAa9082Z9eYTNiYkGwyF67f")
         self.thread = self.client.beta.threads.create()
