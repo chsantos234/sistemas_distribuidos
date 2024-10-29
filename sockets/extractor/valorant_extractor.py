@@ -1,12 +1,7 @@
+from gpt_api import Gptapi
 import requests
 import json
 import re
-
-# armars
-# mapas
-# agentes 
-# ???
-
 
 """
 request['type'] - tipo da rota
@@ -22,8 +17,11 @@ def getRequest(request,full=False):
         "armas": "weapons",
         "mapas": "maps",
         "agentes": "agents",
-        "": "," # adicionar rota
+        "chat": "chat"
     }
+
+    if request['type'] == "chat": 
+        return Gptapi.send_message(request['msg'])
 
     url = f"{header}{requestRoutes[request['type']]}"
 
