@@ -4,7 +4,7 @@ from env import env
 class Gptapi():
 
     def __init__(self):
-        self.api_key = f"{env('GENIUS_KEY')}"
+        self.api_key = f"{env('GPT-KEY')}"
         self.client = OpenAI(api_key=self.api_key)
         self.assistant = self.client.beta.assistants.retrieve("asst_4uAa9082Z9eYTNiYkGwyF67f")
         self.thread = self.client.beta.threads.create()

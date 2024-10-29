@@ -10,7 +10,8 @@ request['search'] - string de pesquisa
 """
 
 def getGPTRequest(request):
-    return Gptapi.send_message(request['msg'])
+    gpt = Gptapi()
+    return gpt.send_message(request['msg'])
 
 
 def getRequest(request,full=False):
