@@ -8,7 +8,7 @@ class Gptapi():
         env_path = os.path.join(os.path.dirname(__file__), '..', '..', '.env')
         load_dotenv(env_path)
 
-        self.api_key = f"{os.getenv("GPT-KEY")}"
+        self.api_key = f'{os.getenv("GPT-KEY")}'
         print(self.api_key)
 
         self.client = OpenAI(api_key=self.api_key)
