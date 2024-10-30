@@ -1,4 +1,4 @@
-from .gpt_api import Gptapi
+from gpt_api import Gptapi
 import requests
 import json
 import re
