@@ -1,6 +1,7 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 import requests
+import argparse
 
 from gpt_api import Gptapi
 
@@ -71,5 +72,8 @@ def chat():
     gpt = Gptapi()
     return gpt.send_message(msg)
 
+parser = argparse.ArgumentParser(description='valorant wiki server')
+parser.add_argument('port', nargs='?', default=5000)
+args = parser.parse_args()
 
-app.run(debug=True)
+app.run(port=args.port, debug=True)
